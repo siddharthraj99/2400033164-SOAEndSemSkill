@@ -1,0 +1,19 @@
+services:
+
+  backend:
+    build: .
+    container_name: node_backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    container_name: redis_db
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_server
+    ports:
+      - "8080:80"
